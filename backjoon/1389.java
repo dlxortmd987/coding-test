@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Main {
+class Main1389 {
 
     static int[][] g;
     static boolean[] visited;
