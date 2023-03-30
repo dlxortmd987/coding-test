@@ -4,11 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class 전력망을_둘로_나누기 {
-
-}
-
-class Solution {
+class 전력망을_둘로_나누기 {
 
     int size;
     int[][] g;
