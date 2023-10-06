@@ -1,7 +1,6 @@
-package code_tree.intermidiate_low.Backtracking.격자_안에서_완전_탐색;
+package code_tree.intermidiate_low.Simulation.격자_안에서_완전_탐색;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 

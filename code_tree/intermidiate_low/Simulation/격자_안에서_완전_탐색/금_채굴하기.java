@@ -1,4 +1,4 @@
-package code_tree.intermidiate_low.Backtracking.격자_안에서_완전_탐색;
+package code_tree.intermidiate_low.Simulation.격자_안에서_완전_탐색;
 
 import java.util.LinkedList;
 import java.util.Queue;
