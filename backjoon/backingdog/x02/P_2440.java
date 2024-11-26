@@ -3,7 +3,7 @@ package backjoon.backingdog.x02;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class P_2439 {
+public class P_2440 {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
