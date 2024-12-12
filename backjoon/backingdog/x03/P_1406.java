@@ -1,28 +1,44 @@
 package backjoon.backingdog.x03;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class P_1406 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
-        String b = sc.nextLine();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        char[] aChars = new char[26];
-        char[] bChars = new char[26];
-        for (int i = 0; i < a.length(); i++) {
-            aChars[a.charAt(i) - 'a']++;
+        String init = br.readLine();
+        int n = Integer.parseInt(br.readLine());
+
+        StringBuilder sb = new StringBuilder(init);
+
+        int cursor = sb.length();
+        for (int i = 0; i < n; i++) {
+            String line = br.readLine();
+
+            if (line.charAt(0) == 'L') {
+                if (cursor == 0) {
+                    continue;
+                }
+                cursor--;
+            } else if (line.charAt(0) == 'D') {
+                if (cursor == sb.length()) {
+                    continue;
+                }
+                cursor++;
+            } else if (line.charAt(0) == 'B') {
+                if (cursor == 0) {
+                    continue;
+                }
+                sb.deleteCharAt(cursor - 1);
+                cursor--;
+            } else {
+                char a = line.charAt(2);
+                sb.insert(cursor, a);
+                cursor++;
+            }
         }
-        for (int i = 0; i < b.length(); i++) {
-            bChars[b.charAt(i) - 'a']++;
-        }
-
-        int l = 0;
-
-        for (int i = 0; i < 26; i++) {
-            l += Math.min(aChars[i], bChars[i]);
-        }
-
-        System.out.println(a.length() + b.length() - 2 * l);
+        System.out.println(sb);
     }
 }
