@@ -3,6 +3,7 @@ package backjoon.backingdog.x03;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 
 public class P_5397 {
     public static void main(String[] args) throws IOException {
@@ -12,40 +13,41 @@ public class P_5397 {
 
         for (int i = 0; i < n; i++) {
             String line = br.readLine();
-            if (!line.contains("<") && !line.contains(">") && !line.contains("-")) {
-                result.append(line);
-                continue;
-            }
+            Stack<Character> leftStack = new Stack<>();
+            Stack<Character> rightStack = new Stack<>();
 
-            int cursor = 0;
-            StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < line.length(); j++) {
-                char cur = line.charAt(j);
-
-                if (cur == '<') {
-                    if (cursor == 0) {
-                        continue;
-                    }
-                    cursor--;
-                } else if (cur == '>') {
-                    if (cursor == sb.length()) {
-                        continue;
-                    }
-                    cursor++;
-                } else if (cur == '-') {
-                    if (cursor == 0) {
-                        continue;
-                    }
-                    sb.deleteCharAt(cursor - 1);
-                    cursor--;
-                } else {
-                    sb.insert(cursor, cur);
-                    cursor++;
+            for (char c : line.toCharArray()) {
+                switch (c) {
+                    case '<':
+                        if (!leftStack.isEmpty()) {
+                            rightStack.push(leftStack.pop());
+                        }
+                        break;
+                    case '>':
+                        if (!rightStack.isEmpty()) {
+                            leftStack.push(rightStack.pop());
+                        }
+                        break;
+                    case '-':
+                        if (!leftStack.isEmpty()) {
+                            leftStack.pop();
+                        }
+                        break;
+                    default:
+                        leftStack.push(c);
                 }
             }
-            sb.append('\n');
-            result.append(sb);
+
+            // 왼쪽 스택의 내용을 출력하고 오른쪽 스택을 뒤에서부터 출력
+            while (!leftStack.isEmpty()) {
+                rightStack.push(leftStack.pop());
+            }
+            while (!rightStack.isEmpty()) {
+                result.append(rightStack.pop());
+            }
+            result.append('\n');
         }
+
         System.out.println(result);
     }
 }
