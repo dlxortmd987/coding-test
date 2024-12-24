@@ -1,4 +1,4 @@
-package backjoon.backingdog.x03;
+package backjoon.backingdog.x04;
 
 import java.io.BufferedReader;
 import java.io.IOException;
