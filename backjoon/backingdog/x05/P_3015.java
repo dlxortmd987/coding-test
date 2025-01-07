@@ -10,24 +10,16 @@ public class P_3015 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        int res = n - 1;
+        long res = 0L;
 
-        Stack<Integer> stack = new Stack<>();
+        Stack<Long> stack = new Stack<>();
         for (int i = 0; i < n; i++) {
-            int cur = Integer.parseInt(br.readLine());
-            if (stack.isEmpty()) {
-                stack.push(cur);
-                continue;
-            }
-
-            Integer top = stack.peek();
-
-            if (top > cur) {
+            long cur = Long.parseLong(br.readLine());
+            while (!stack.isEmpty() && stack.peek() <= cur) {
                 stack.pop();
-            } else {
-                stack.push(cur);
-                res++;
             }
+            res += stack.size();
+            stack.push(cur);
         }
         System.out.println(res);
     }
